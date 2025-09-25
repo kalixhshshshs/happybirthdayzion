@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homepage</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    body { background: linear-gradient(135deg, #7d3cff, #b966ff); color: white; }
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.5); padding: 1rem 2rem;
+      display: flex; justify-content: center; align-items: center; z-index: 1000;
+    }
+    nav { display: flex; gap: 2rem; }
+    nav a {
+      text-decoration: none; color: #fff; font-weight: bold;
+      font-size: 1.2rem; padding: 0.5rem 1rem; border-radius: 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav a:hover { background: #fff; color: #7d3cff; }
+    section {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; padding: 2rem;
+      text-align: center; transition: all 1s ease;
+    }
+    section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    section p { max-width: 600px; font-size: 1.1rem; line-height: 1.6; }
+    #song { display: flex; flex-direction: column; gap: 2rem; }
+    .video-container {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; width: 100%; max-width: 1000px;
+    }
+    .video-container iframe {
+      width: 100%; height: 200px; border-radius: 15px; border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#message">Message</a>
+      <a href="#song">Song</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>this website is about me wishing you a happy birthday. even though i’m far away from you, i still made this to make the things i want to say to you even better.
+
+</p>
+  </section>
+
+  <section id="message">
+    <h2>Message</h2>
+    <p>hello bff, happy birthday to you. it’s your sweet 16, and i know you’re a bit sad because you can’t do everything you want to do due to unexpected circumstances. but i feel like your family has a plan for your birthday. it’s your day, so enjoy whatever is there. i really want to say thank you because, even though you’ve made mistakes with me, you realized what you did was wrong, and i appreciate that. happy 16th birthday again, baby. 
+      i love you.</p>
+  </section>
+
+  <section id="song">
+    <h2>Song</h2>
+    <p>Top 2 Songs and i'm really sorry kasi hindi ko napagana yung 3</p>
+    <div class="video-container">
+      <!-- Still With You - Jungkook -->
+      <iframe src="https://www.youtube.com/embed/5hrtGCPyFM8" allowfullscreen></iframe>
+
+      <!-- Lovers Rock - TV Girl -->
+      <iframe src="https://www.youtube.com/embed/wcJY0WDe-H4" allowfullscreen></iframe>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login & Sign Up</title>
+  <style>
+    /* Reset and fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #7d3cff, #b966ff);
+    }
+
+    .container {
+      background: white;
+      width: 380px;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #7d3cff;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1.5rem;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 0.7rem;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .tabs button.active {
+      color: #7d3cff;
+      border-bottom: 3px solid #7d3cff;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    input {
+      padding: 0.8rem;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #7d3cff;
+    }
+
+    button.submit {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      background: #7d3cff;
+      color: white;
+      font-weight: bold;
+      cursor: not-allowed;
+      opacity: 0.6;
+      transition: 0.3s;
+    }
+
+    button.submit.enabled {
+      cursor: pointer;
+      opacity: 1;
+      box-shadow: 0 4px 10px rgba(125,60,255,0.4);
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: gray;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>💜 Welcome 💜</h2>
+
+    <div class="tabs">
+      <button class="tab active" onclick="showForm('login')">Login</button>
+      <button class="tab" onclick="showForm('signup')">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login" class="active" onsubmit="redirectToHomepage(event)">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit" id="loginBtn" class="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup" onsubmit="redirectToHomepage(event)">
+      <input type="text" id="signupName" placeholder="Full Name" required>
+      <input type="email" id="signupEmail" placeholder="Email" required>
+      <input type="password" id="signupPassword" placeholder="Password" required>
+      <button type="submit" id="signupBtn" class="submit">Sign Up</button>
+    </form>
+
+    <p class="note">Fill in all fields to unlock the button ✨</p>
+  </div>
+
+  <script>
+    // Switch between Login and Signup
+    function showForm(form) {
+      document.querySelectorAll("form").forEach(f => f.classList.remove("active"));
+      document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
+      document.getElementById(form).classList.add("active");
+      document.querySelector(`.tabs button[onclick*="${form}"]`).classList.add("active");
+    }
+
+    // Enable button only if all fields are filled
+    function validateForm(formId, buttonId) {
+      const form = document.getElementById(formId);
+      const button = document.getElementById(buttonId);
+
+      form.addEventListener("input", () => {
+        let allFilled = true;
+        form.querySelectorAll("input").forEach(input => {
+          if (!input.value.trim()) allFilled = false;
+        });
+
+        if (allFilled) {
+          button.classList.add("enabled");
+          button.disabled = false;
+          button.style.cursor = "pointer";
+        } else {
+          button.classList.remove("enabled");
+          button.disabled = true;
+          button.style.cursor = "not-allowed";
+        }
+      });
+    }
+
+    // Apply validation
+    validateForm("login", "loginBtn");
+    validateForm("signup", "signupBtn");
+
+    // Redirect to homepage
+    function redirectToHomepage(event) {
+      event.preventDefault(); // Prevent form from submitting normally
+      window.location.href = "forzion_homepage.html"; // Redirect to homepage
+    }
+  </script>
+</body>
+</html>
+
